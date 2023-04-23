@@ -1,7 +1,13 @@
 # Introduction to SpringFramework
+
+### Setup & JPA Entities
+> Commit Reference: [`e4a21b9`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/e4a21b90c1757373aae02eaa28955a64a137e581)
 1. Open [start.spring.io](start.spring.io) and set all dependencies / build tool type / spring version / java version etc and download the starter repository.
 
 2. We defined POJOs for JPA Entities (Book & Author) inside the java folder located in `src > main > java > com > example > appName > domain`. (POJO: Plain Old Java Object. Contains Fields, Getters & Setters (these can be generated automatically in VSCode by `right click > source action.. > generate getters and setters`) with no such restriction or rules to adhere to)
+
+### Many-to-Many Relationship b/w entities
+> Commit Reference: [`345ab80`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/345ab8075dbe4398016f7454b2745ed8222bfc85)
 
 3. We Defined a Many to Many Relationship between the two objects. 
     <details><summary>Defining Many to Many Relationships</summary>
@@ -10,7 +16,13 @@
     - By specifying mappedBy = "authors" in the @ManyToMany annotation of the Author entity, you are telling JPA that the authors field in the Book entity is the owning side of the relationship, and that it should use the author_book join table defined in the Book entity to manage the relationship. This means that you do not need to define another @JoinTable annotation in the Author entity, as the relationship and join table are already defined in the Book entity. JPA will automatically create the join table and manage the Many-to-Many relationship between Author and Book entities based on the annotations in the Book entity.
     </details>
 
+### Object Equality, Hashcode & toString() for Entities
+> Commit Reference: [`50b4274`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/50b4274a149b954c7f9b08ccb75372dc884e4746)
+
 4. Equality for two objects (as determined by hibernate) may affect many operations run on an entity, thus we define the `equals` and the `hashcode` methods on an entity (this can be generated automatically in VSCode by `right click > source action.. > equals & hashcode`).
+
+### JPA Repositories
+> Commit Reference: [`3709f011`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/3709f011d3acf0aae1af855c6314f17ad97d4c68)
 
 5.  We extend the CrudRepository interface to create repositories for Author & Book Entities.
     <details><summary>What is a JPA Repository?</summary>
@@ -35,6 +47,10 @@
 
         - By using the CRUDRepository interface, developers can easily perform common database operations without having to write SQL queries or boilerplate code. The interface is also flexible enough to allow developers to define custom queries using JPA Query Language (JPQL) or native SQL, if necessary.
     </details>
+
+### Bootstrapping, Object Creation & Linking
+> Commit Reference: [`ae33e9c`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/ae33e9c6da5caa879301a6765df4feb282d6764c)
+   
 6. We add a CommandLineRunner, which initializes the H2 in-memory database with an Author & a Book object, which are mapped to each other. We noticed how, the many-to-many field when left blank may lead to null-field error (thus, we initalize it with a new hashset).
     <details><summary>What are Spring Stereotypes?</summary>
     
