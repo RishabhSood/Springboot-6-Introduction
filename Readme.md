@@ -51,7 +51,7 @@
 ### Bootstrapping, Object Creation & Linking
 > Commit Reference: [`ae33e9c`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/ae33e9c6da5caa879301a6765df4feb282d6764c)
    
-6. We add a CommandLineRunner, which initializes the H2 in-memory database with an Author & a Book object, which are mapped to each other. We noticed how, the many-to-many field when left blank may lead to null-field error (thus, we initalize it with a new hashset).
+6. We add a CommandLineRunner, which initializes the H2 in-memory database with an Author & a Book object, which are mapped to each other. We noticed how, the many-to-many field when left blank may lead to null-field error (thus, we initalize it with a new hashset). (Note that, for a many to many relationship, we must update the `Set` attribute for both the objects. Fixed in the second commit mentioned above)
     <details><summary>What are Spring Stereotypes?</summary>
     
     - In the Spring framework, a stereotype is a way of marking a class to indicate its role in the application. The most commonly used stereotypes in Spring are `@Component`, `@Service`, `@Repository`, and `@Controller`. These stereotypes are used to define specific roles for classes in a Spring application and to help Spring manage the lifecycle and dependencies of these classes.
@@ -102,3 +102,10 @@
     - Each CommandLineRunner component can be defined in a separate file, typically as a Spring `@Component` or `@Service` class.
     - Spring will `automatically detect` and execute all `CommandLineRunner` instances defined in the application context when the application `starts`.
     </details>
+
+### Viewing & Querying H2 DB
+> Commit Reference: [``]()
+- In case developer tools are installed, one can enable the h2-console by adding the following setting:
+    `spring.h2.console.enabled=true`
+    to the `src > main > resources > application.properties` file.
+- Once done, the console can then be accessed at `/h2-console`. Remember to note the `JDBC URL` output in the console (this can then be used to log into the database on the console).
