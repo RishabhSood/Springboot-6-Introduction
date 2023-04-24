@@ -114,8 +114,8 @@
 > Commit Reference: [``]()
 
 <img width="861" alt="image" src="https://user-images.githubusercontent.com/55499929/233903601-d2760632-992a-4de7-b134-1d91830e4f54.png">
-- `Model:` Simple POJO with collection of properties which may/may not be used by the view. It represents the data and business logic of the application. It is responsible for managing the data, performing operations on the data, and providing access to the data to the other components of the application.
 
+- `Model:` Simple POJO with collection of properties which may/may not be used by the view. It represents the data and business logic of the application. It is responsible for managing the data, performing operations on the data, and providing access to the data to the other components of the application. 
     The Model typically consists of classes that define the data objects and their relationships, as well as the operations that can be performed on the data. It encapsulates the business logic of the application and provides a layer of abstraction between the data and the other components of the application.
 
     Example: JPA + Hibernate
