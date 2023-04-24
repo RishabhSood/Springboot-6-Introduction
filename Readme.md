@@ -127,7 +127,7 @@
     </details>
 
 ### Creating a Service Layer
-> Commit Reference: [``]()
+> Commit Reference: [`e94f32a`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/e94f32a4d15a55ae9c7c7fe4db6f7cb94cd05e7f)
 - We create a `services` package in the `src > main > java > com.example.appname` directory.
 - Next, here we add `interfaces` & their respective `implemntation` (annotated by the `@Service` decorator). Here, we add a `Books` Service which contains a `findAll` method.
     <details><summary>How does Dependency injection work in the current context ?</summary>
@@ -137,4 +137,39 @@
     - The `BookServiceImpl` class has a dependency on the `BookRepository interface`, which is injected through the constructor using constructor-based dependency injection. 
 
     - By using dependency injection, the service component is not directly responsible for creating its dependencies. Instead, the Spring framework will create an instance of the `BookRepository` implementation and pass it into the `constructor` of the `BookServiceImpl class`. This allows for a more modular and flexible application design.
+    </details>
+
+### Spring Controllers
+> Commit Reference: [``]()
+- We create a controller `BookController` which returns an iterable of all books in the db, when hit on the endpoint `/books`. The controller depends on a service for its implementation, which is injected by `spring`. Notice that the service interface is provided instead of an implementation.
+- A `Controller` ideally returns a view (to which it passes information via a `model`, which contains `key-value` attributes with the information needed)
+- When Spring detects that the BookController class has a constructor with a single parameter of type BookService, it looks for a bean that implements the BookService interface and injects it into the constructor. In this case, Spring finds the BookServiceImpl bean that implements the BookService interface and injects it into the BookController constructor.
+    <details><summary>How does Spring knows which implementation to inject?</summary>
+
+    - When we have multiple services that implement the same interface, we need to specify which implementation should be used for a given component. This is done using the `@Qualifier` annotation, which allows us to specify a specific implementation that should be used for dependency injection. 
+    - Spring will use the implementation that is specified in the configuration, and if we don't specify a qualifier, Spring will try to autowire the dependencies based on type and may throw an exception if it finds multiple implementations of the same interface. By specifying the `@Qualifier` annotation, we can ensure that the correct implementation is used for dependency injection.
+        <details><summary>Example:</summary>
+        
+        ```java
+        @Service
+        @Qualifier("bookServiceImpl")
+        public class BookServiceImpl implements BookService {
+        // implementation details
+        }
+        ```
+        _And we would modify the constructor of the BookController to use the "@Qualifier" annotation to specify the BookServiceImpl implementation:_
+        ```java
+        @Controller
+        public class BookController {
+            
+            private final BookService bookService;
+
+            public BookController(@Qualifier("bookServiceImpl") BookService bookService) {
+                this.bookService = bookService;
+            }
+
+            // rest of the class implementation
+        }
+        ```
+        </details>
     </details>
