@@ -111,7 +111,7 @@
 - Once done, the console can then be accessed at `/h2-console`. Remember to note the `JDBC URL` output in the console (this can then be used to log into the database on the console).
 
 ### MVC Architecture
-> Commit Reference: [``]()
+> Commit Reference: None
 
 <img width="861" alt="image" src="https://user-images.githubusercontent.com/55499929/233903601-d2760632-992a-4de7-b134-1d91830e4f54.png">
 
@@ -124,4 +124,17 @@
 
     <details> <summary>An insight on Models & Service</summary>
     The Model represents the data and its operations, while the Service layer encapsulates the application's business logic and coordinates the interaction between various components, including the Model.
+    </details>
+
+### Creating a Service Layer
+> Commit Reference: [``]()
+- We create a `services` package in the `src > main > java > com.example.appname` directory.
+- Next, here we add `interfaces` & their respective `implemntation` (annotated by the `@Service` decorator). Here, we add a `Books` Service which contains a `findAll` method.
+    <details><summary>How does Dependency injection work in the current context ?</summary>
+    
+    - The `"@Service"` annotation indicates to the Spring framework that this class is a candidate for dependency injection.
+
+    - The `BookServiceImpl` class has a dependency on the `BookRepository interface`, which is injected through the constructor using constructor-based dependency injection. 
+
+    - By using dependency injection, the service component is not directly responsible for creating its dependencies. Instead, the Spring framework will create an instance of the `BookRepository` implementation and pass it into the `constructor` of the `BookServiceImpl class`. This allows for a more modular and flexible application design.
     </details>
