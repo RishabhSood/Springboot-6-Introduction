@@ -49,7 +49,7 @@
     </details>
 
 ### Bootstrapping, Object Creation & Linking
-> Commit Reference: [`ae33e9c`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/ae33e9c6da5caa879301a6765df4feb282d6764c)
+> Commit Reference: [`ae33e9c`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/ae33e9c6da5caa879301a6765df4feb282d6764c), [`8dcc41d`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/8dcc41d4c1b64c40c670851c675761e03db7ff59)
    
 6. We add a CommandLineRunner, which initializes the H2 in-memory database with an Author & a Book object, which are mapped to each other. We noticed how, the many-to-many field when left blank may lead to null-field error (thus, we initalize it with a new hashset). (Note that, for a many to many relationship, we must update the `Set` attribute for both the objects. Fixed in the second commit mentioned above)
     <details><summary>What are Spring Stereotypes?</summary>
@@ -104,8 +104,24 @@
     </details>
 
 ### Viewing & Querying H2 DB
-> Commit Reference: [``]()
+> Commit Reference: [`8dcc41d`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/8dcc41d4c1b64c40c670851c675761e03db7ff59)
 - In case developer tools are installed, one can enable the h2-console by adding the following setting:
     `spring.h2.console.enabled=true`
     to the `src > main > resources > application.properties` file.
 - Once done, the console can then be accessed at `/h2-console`. Remember to note the `JDBC URL` output in the console (this can then be used to log into the database on the console).
+
+### MVC Architecture
+> Commit Reference: [``]()
+
+<img width="861" alt="image" src="https://user-images.githubusercontent.com/55499929/233903601-d2760632-992a-4de7-b134-1d91830e4f54.png">
+- `Model:` Simple POJO with collection of properties which may/may not be used by the view. It represents the data and business logic of the application. It is responsible for managing the data, performing operations on the data, and providing access to the data to the other components of the application.
+
+    The Model typically consists of classes that define the data objects and their relationships, as well as the operations that can be performed on the data. It encapsulates the business logic of the application and provides a layer of abstraction between the data and the other components of the application.
+
+    Example: JPA + Hibernate
+- `View:` Data as requested by the client (GUI). Implemented with JSP, Thymeleaf etc. Can be HTML, JSON, XML etc.
+- `Controller:` Java CLass implemeted to handle request mapping. Contains minimal business logic, and primarily acts a 'traffic cop'. Works in conjunction with services which contains business logic.
+
+    <details> <summary>An insight on Models & Service</summary>
+    The Model represents the data and its operations, while the Service layer encapsulates the application's business logic and coordinates the interaction between various components, including the Model.
+    </details>
