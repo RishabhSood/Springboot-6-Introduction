@@ -1,5 +1,7 @@
 # Introduction to SpringFramework
 
+![wp11161502-2](https://user-images.githubusercontent.com/55499929/234184216-523567a6-48c5-4031-a679-58b372e6a822.png)
+
 ### Setup & JPA Entities
 > Commit Reference: [`e4a21b9`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/e4a21b90c1757373aae02eaa28955a64a137e581)
 1. Open [start.spring.io](start.spring.io) and set all dependencies / build tool type / spring version / java version etc and download the starter repository.
