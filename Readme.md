@@ -140,7 +140,7 @@
     </details>
 
 ### Spring Controllers
-> Commit Reference: [``]()
+> Commit Reference: [`aa23c69`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/aa23c69cb234ada3ce38c4075e4823de771224d8)
 - We create a controller `BookController` which returns an iterable of all books in the db, when hit on the endpoint `/books`. The controller depends on a service for its implementation, which is injected by `spring`. Notice that the service interface is provided instead of an implementation.
 - A `Controller` ideally returns a view (to which it passes information via a `model`, which contains `key-value` attributes with the information needed)
 - When Spring detects that the BookController class has a constructor with a single parameter of type BookService, it looks for a bean that implements the BookService interface and injects it into the constructor. In this case, Spring finds the BookServiceImpl bean that implements the BookService interface and injects it into the BookController constructor.
@@ -173,3 +173,9 @@
         ```
         </details>
     </details>
+
+### Thymeleaf Templates
+> Commit Reference: [``]()
+- Thymeleaf templating requires the `thymeleaf starter` dependecy, which must be added to the `pom.xml` file.
+- Next, one can start creating tempaltes in `src > main > resources > templates`
+- 📑 [Docs](https://www.thymeleaf.org/documentation.html)
