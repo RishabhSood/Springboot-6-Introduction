@@ -175,7 +175,14 @@
     </details>
 
 ### Thymeleaf Templates
-> Commit Reference: [``]()
+> Commit Reference: [`ba675d3`](https://github.com/RishabhSood/Springboot-6-WebApp/commit/ba675d3ee4bd027a58c35174e1e16116c38dffa3)
 - Thymeleaf templating requires the `thymeleaf starter` dependecy, which must be added to the `pom.xml` file.
 - Next, one can start creating tempaltes in `src > main > resources > templates`
 - 📑 [Docs](https://www.thymeleaf.org/documentation.html)
+
+### Summary
+> You might notice that we have added a List-Authors View in the final commit, this is left as an exercise for the reader to implement.
+- We have created a very basic application which renders templates by thymeleaf.
+- Spring framework takes the controller, which are mapping us to the right templates/documents (which go all the way to the database and get the records).
+- We haven't created any databse tables on our own, this is done automatically by hibernate (configured by springboot). It creates databases based on what we configured in our domain. Hibernate performs reflection on the Entities we have created in order to do this.
+- The databases are then initialized by the CommandLineRunner.
